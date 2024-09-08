@@ -11,9 +11,17 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            using (FileStream file = new FileStream("data.txt", FileMode.OpenOrCreate))
+            string[] lines = File.ReadAllLines("data.txt");
+            int dim = int.Parse(lines[0]);
+            double[] vec = Array.ConvertAll(lines[1].Split(' '), double.Parse);
+            double[,] matrix = new double[dim, dim];
+            for (int i = 0; i < dim; i++)
             {
-                Console.WriteLine("Created a file");
+                string[] row = lines[i + 2].Split(' ');
+                for (int j = 0; j < dim; j++)
+                {
+                    matrix[i, j] = double.Parse(row[j]);
+                }
             }
                 
         }
