@@ -23,8 +23,14 @@ namespace ConsoleApp1
                     matrix[i, j] = double.Parse(row[j]);
                 }
             }
-            
-            
+            if (IsSymmetrical(ref matrix, dim))
+            {
+                Console.WriteLine("Длина вектора ({0}) в {1}-мерном пространстве - {2}", string.Join(",", vec), dim, LengthCalculation(ref matrix, dim, ref vec));
+                Console.ReadLine();
+            }
+                
+            else
+                Console.WriteLine("Матрица тензоран не симметрична");
         }
 
         static bool IsSymmetrical(ref double[,] matrix, int dim)
