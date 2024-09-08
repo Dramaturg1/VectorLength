@@ -23,7 +23,40 @@ namespace ConsoleApp1
                     matrix[i, j] = double.Parse(row[j]);
                 }
             }
-                
+            
+            
+        }
+
+        static bool IsSymmetrical(ref double[,] matrix, int dim)
+        {
+            for (int i = 0; i < dim; i++)
+            {
+                for (int j = 0; j < dim; j++)
+                {
+                    if (matrix[i, j] != matrix[j, i])
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        static double LengthCalculation(ref double[,] matrix, int dim, ref double[] vec)
+        {
+            double[] temp = new double[dim];
+            for (int i = 0; i < dim; i++)
+            {
+                for (int j = 0; j < dim; j++)
+                {
+                    temp[i] += matrix[i, j] * vec[j];
+                }
+            }
+            double result = 0.0;
+            for (int i = 0; i < dim; i++)
+            {
+                result += temp[i] * vec[i];
+            }
+
+            return Math.Sqrt(result);
         }
     }
 }
